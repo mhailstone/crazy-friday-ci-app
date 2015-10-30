@@ -1,5 +1,5 @@
 - service: app
-command: curl -X POST -H "Content-Type: application/json" -d '{"username": "Codeship Bot", "text": "Starting pipeline"}' https://hooks.slack.com/services/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
+  command: curl -X POST -H "Content-Type: application/json" -d '{"username": "Codeship Bot", "text": "Starting pipeline"}' https://hooks.slack.com/services/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
 - service: app
   command: mvn clean package
 - service: app
