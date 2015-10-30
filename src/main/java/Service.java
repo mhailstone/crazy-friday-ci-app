@@ -27,6 +27,7 @@ public class Service {
         }
 
         String format = greetingFormat(lang);
+        res.header("Content-Type", "application/json");
         return gson.toJson(new Greeting(MessageFormat.format(format, name), lang));
     }
 

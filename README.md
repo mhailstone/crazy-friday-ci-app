@@ -15,3 +15,6 @@ Running in Docker:
 docker build -t cf-hello-world .
 
 docker run -d --name cf-hello-world -p 4567:4567 cf-hello-world
+
+To make the automated unit test fail, go to src/test/java/BasicUnitTest.java and uncomment the second line in the 'runTest' method.
+
