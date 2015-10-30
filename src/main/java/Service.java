@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import spark.Request;
 import spark.Response;
+import spark.servlet.SparkApplication;
 
 import java.text.MessageFormat;
 
@@ -10,15 +11,12 @@ import static spark.Spark.*;
 /**
  * @author Joseph Moore (joseph_moore@byu.edu)
  */
-public class Service {
-    public static void main(String... args) {
-        get("/", Service::sayHello);
-    }
+public class Service /*implements SparkApplication*/ {
+//    public static void main(String... args) {
+//        get("/", Service::sayHello);
+//    }
 
-    private static String sayHello(Request req, Response res) throws Exception {
-        String lang = req.queryParams("lang");
-        String name = req.queryParams("name");
-
+    public static String makeGreeting(String lang, String name) {
         if (lang == null) {
             lang = "en";
         }
@@ -27,9 +25,16 @@ public class Service {
         }
 
         String format = greetingFormat(lang);
-        res.header("Content-Type", "application/json");
         return gson.toJson(new Greeting(MessageFormat.format(format, name), lang));
     }
+
+//    private static String sayHello(Request req, Response res) throws Exception {
+//        String lang = req.queryParams("lang");
+//        String name = req.queryParams("name");
+//
+//        res.header("Content-Type", "application/json");
+//        return makeGreeting(lang, name);
+//    }
 
     private static String greetingFormat(String lang) {
         switch (lang) {
@@ -50,6 +55,16 @@ public class Service {
 
     private static final Gson gson = new GsonBuilder()
             .create();
+
+//    @Override
+//    public void init() {
+//        get("/", Service::sayHello);
+//    }
+//
+//    @Override
+//    public void destroy() {
+//
+//    }
 
     private static final class Greeting {
         private final String greeting;
