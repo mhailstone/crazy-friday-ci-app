@@ -1,4 +1,6 @@
 - service: app
+  command: curl -X POST -H "Content-Type: application/json" -d https://hooks.slack.com/services/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
+- service: app
   command: mvn clean package
 - service: app
   command: mkdir -p "$HOME/.ssh" && echo -e $PRIVATE_TOMCAT_SSH_KEY >> $HOME/.ssh/id_rsa
