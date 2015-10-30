@@ -1,0 +1,6 @@
+- service: app
+  command: mvn clean package
+- service: app
+  command: mkdir -p "$HOME/.ssh" && echo -e $PRIVATE_TOMCAT_SSH_KEY >> $HOME/.ssh/id_rsa
+- service: app
+  command: scp
