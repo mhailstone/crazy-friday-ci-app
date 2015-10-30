@@ -12,7 +12,7 @@ import static spark.Spark.*;
  */
 public class Service {
     public static void main(String... args) {
-        get("/hello", Service::sayHello);
+        get("/", Service::sayHello);
     }
 
     private static String sayHello(Request req, Response res) throws Exception {
