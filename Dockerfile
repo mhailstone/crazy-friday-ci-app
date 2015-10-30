@@ -6,8 +6,8 @@ WORKDIR /usr/src/app
 
 ADD . /usr/src/app
 
-RUN mvn install
+#RUN mvn install
 
 EXPOSE 4567
 
-CMD ["mvn", "exec:java"]
+#CMD ["mvn", "exec:java"]
